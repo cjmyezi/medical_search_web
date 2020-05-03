@@ -1,25 +1,93 @@
 <html>
     <head>
         <title>Medical Search</title>
-        <link href="/static/Flat-UI/app/css/vendor/boostrap.min.css" rel="stylesheet">
-        <link href="/static/Flat-UI/app/css/flat-ui.css">
+
+        <link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
     </head>
     <body>
-        <div class="pagination">
-            <ul>
-              <li class="previous"><a href="#fakelink" class="fui-arrow-left cc_pointer"></a></li>
-              <li class="active"><a href="#fakelink">1</a></li>
-              <li><a href="#fakelink">2</a></li>
-              <li><a href="#fakelink">3</a></li>
-              <li><a href="#fakelink">4</a></li>
-              <li><a href="#fakelink">5</a></li>
-              <li><a href="#fakelink">6</a></li>
-              <li><a href="#fakelink">7</a></li>
-              <li><a href="#fakelink">8</a></li>
-              <li class="next"><a href="#fakelink" class="fui-arrow-right"></a></li>
-            </ul>
+    <div class="layui-main" style="margin-top:240px">
+        <div align="center">
+        <h1> Medical Search</h1>
+            </div>
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+    <div class="layui-input-block">
+      <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
+    </div>
         </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="/static/Flat-UI/app/scripts/flat-ui.css">
+     <div class="layui-form-item" align="center">
+    <div class="layui-input-block">
+      <input type="checkbox" name="filter[name]" title="Disease Name" checked>
+      <input type="checkbox" name="filter[symptom]" title="Symptoms" checked>
+    </div>
+     </div>
+        <div class="layui-container" align="center">
+
+    <button type="button" class="layui-btn layui-btn-lg layui-btn-radius">Search</button>
+
+        </div>
+    </form>
+    </div>
+    <script>
+layui.use('form', function(){
+  var form = layui.form;
+
+  //各种基于事件的操作，下面会有进一步介绍
+});
+</script>
+<div id="result-container">
+    {% if name_checked %}
+<h2>Related by name:</h2>
+{{name_list}}
+
+{% if show_pagination_name %}
+    <div id="pagination-container">
+
+        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-6">
+            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0"><em>←</em></a>
+            <span class="layui-laypage-curr">
+                <em class="layui-laypage-em"></em>
+                <em>1</em></span>
+            <a href="javascript:;" data-page="2">2</a>
+            <a href="javascript:;" data-page="3">3</a>
+            <a href="javascript:;" data-page="4">4</a>
+            <a href="javascript:;" data-page="5">5</a>
+            <span class="layui-laypage-spr">…</span>
+            <a href="javascript:;" class="layui-laypage-last" title="尾页" data-page="10">Last Page</a>
+            <a href="javascript:;" class="layui-laypage-next" data-page="2">
+                <em>→</em></a>
+        </div>
+
+    </div>
+{% endif %}
+    {% endif %}
+
+    {% if symptom_checked %}
+<h2>Related by symptoms:</h2>
+{{symptom_list}}
+
+{% if show_pagination_symptom %}
+    <div id="pagination-container">
+
+        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-6">
+            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0"><em>←</em></a>
+            <span class="layui-laypage-curr">
+                <em class="layui-laypage-em"></em>
+                <em>1</em></span>
+            <a href="javascript:;" data-page="2">2</a>
+            <a href="javascript:;" data-page="3">3</a>
+            <a href="javascript:;" data-page="4">4</a>
+            <a href="javascript:;" data-page="5">5</a>
+            <span class="layui-laypage-spr">…</span>
+            <a href="javascript:;" class="layui-laypage-last" title="尾页" data-page="10">Last Page</a>
+            <a href="javascript:;" class="layui-laypage-next" data-page="2">
+                <em>→</em></a>
+        </div>
+
+    </div>
+{% endif %}
+    {% endif %}
+</div>
     </body>
 </html>
