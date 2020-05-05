@@ -2,18 +2,18 @@
     <head>
         <title>Medical Search</title>
 
-        <link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
-        <script src="/static/layui/layui.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="../static/layui/css/layui.css"  media="all">
+        <script src="../static/layui/layui.js" charset="utf-8"></script>
     </head>
     <body>
     <div class="layui-main" style="margin-top:240px">
         <div align="center">
         <h1> Medical Search</h1>
             </div>
-    <form class="layui-form" action="">
+    <form class="layui-form" action="/medical_search/search/" method="POST">{% csrf_token %}
         <div class="layui-form-item">
     <div class="layui-input-block">
-      <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
+      <input type="text" name="query" required  lay-verify="required" autocomplete="off" class="layui-input">
     </div>
         </div>
      <div class="layui-form-item" align="center">
@@ -24,7 +24,7 @@
      </div>
         <div class="layui-container" align="center">
 
-    <button type="button" class="layui-btn layui-btn-lg layui-btn-radius">Search</button>
+    <button type="submit" class="layui-btn layui-btn-lg layui-btn-radius">Search</button>
 
         </div>
     </form>
