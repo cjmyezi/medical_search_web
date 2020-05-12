@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{disease_name}}</title>
+    <title>{{title}}</title>
 </head>
 <body>
-<h1>{{disease_name}}</h1>
+<h1>{{title}}</h1>
+{% autoescape off %}
 {{content}}
+{% endautoescape %}
 </body>
 </html>

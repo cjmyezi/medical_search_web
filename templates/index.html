@@ -1,12 +1,13 @@
 <html>
+{% load static %}
     <head>
         <title>Medical Search</title>
 
-        <link rel="stylesheet" href="../static/layui/css/layui.css"  media="all">
-        <script src="../static/layui/layui.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
     </head>
     <body>
-    <div class="layui-main" style="margin-top:240px">
+    <div class="layui-main">
         <div align="center">
         <h1> Medical Search</h1>
             </div>
@@ -32,19 +33,30 @@
     <script>
 layui.use('form', function(){
   var form = layui.form;
-
-  //各种基于事件的操作，下面会有进一步介绍
 });
 </script>
+
 <div id="result-container">
     {% if name_checked %}
 <h2>Related by name:</h2>
-{{name_list}}
+{% if name_list %}
+{% for title,did in name_list.items %}
+	<a href={% url 'result' id=did %}>{{title}}</a><br>
+{% endfor %}
 
+{% else %}
+No results found for specified name.
+
+{% endif %}
+<script>
+    function
+
+</script>
 {% if show_pagination_name %}
     <div id="pagination-container">
 
         <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-6">
+            {% if  %}
             <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0"><em>←</em></a>
             <span class="layui-laypage-curr">
                 <em class="layui-laypage-em"></em>
@@ -65,7 +77,15 @@ layui.use('form', function(){
 
     {% if symptom_checked %}
 <h2>Related by symptoms:</h2>
-{{symptom_list}}
+{% if symp_list %}
+{% for title, did in symp_list.items %}
+	<a href={% url 'result' id=did %}>{{title}}</a><br>
+{% endfor %}
+
+{% else %}
+No results found for specified symptoms.
+
+{% endif %}
 
 {% if show_pagination_symptom %}
     <div id="pagination-container">
